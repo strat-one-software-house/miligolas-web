@@ -1,0 +1,592 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#3d698b" />
+    <title>Home - MiliGolas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="Images/icon mili golas.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Font Awesome Icons -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Google Fonts -->
+    <link href="Content/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="css/hover-min.css" rel="stylesheet" />
+    <link href="Content/Font.css" rel="stylesheet">
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+
+    <!--Library Slider-->
+    <!-- End WOWSlider.com HEAD section -->
+</head>
+<body id="page-top">
+    <script>
+        function myFunction() {
+            var x = document.getElementById("mySelect").value;
+            document.getElementById("demo").innerHTML = "You selected: " + x;
+            $("table").hide();
+            $("#" + x).show();
+        }
+        function goto(content) {
+            var _window = $(window).scrollTop();
+
+            //$("#tgl").removeClass("navbar-toggler");
+            $("#navbarResponsive").removeClass("show");
+
+            $("#tgl").addClass("collapse");
+
+            $("body, html").delay(500).animate({
+                scrollTop: $('#' + content).offset().top - 150
+            }, 600);
+        }
+        function goto_ProductGallery(content) {
+            window.location.href = "http://localhost/spyros/productGallery?cnt=" + content;
+        }
+        $(document).ready(function () {
+            document.getElementById("page-top").innerHTML = document.getElementById("page-top").innerHTML.replace("t", "")
+            // $("#wowslider-container1").addClass('ws_grabbing');
+            // console.log('a');
+            // $("#wowslider-container1").removeClass('ws_grabbing');
+            $('.ws_play')[0].click();
+            console.log('b');
+            const urlParams = new URLSearchParams(window.location.search);
+            const cnt = urlParams.get('cnt');
+            if (cnt != "") {
+                goto(cnt);
+            }
+
+
+            $("#ifrm").hide();
+            $(".product").hover(function () {
+                var src = $(this).find('.product-img').attr('src');
+                var newsrc = src.replace('png', 'jpg');
+                //$(this).find('.product-img').attr('src', newsrc);
+                $(this).css('background-color', '#ffe400');
+                $(this).find('.product-text').css('background-color', '#ffe400');
+                $(this).find('.product-text').css('color', '#22478b');
+            }, function () {
+                var src = $(this).find('.product-img').attr('src');
+                var newsrc = src.replace('jpg', 'png');
+                //$(this).find('.product-img').attr('src', newsrc);
+                $(this).css('background-color', '#23468c');
+                $(this).find('.product-text').css('background-color', '#23468c');
+                $(this).find('.product-text').css('color', 'white');
+            });
+
+        });
+        var isShow = 0;
+        var isScrolling;
+        var lastTop = $(window).scrollTop();
+        window.addEventListener('scroll', function (event) {
+
+            // Clear our timeout throughout the scroll
+            window.clearTimeout(isScrolling);
+
+            // Set a timeout to run after scrolling ends
+            isScrolling = setTimeout(function () {
+
+                // Run the callback
+                // document.getElementById("tes").innerHTML = $(window).scrollTop();
+                $('#tabDownload').animate({ 'top': '50%' }, 1000);
+                lastTop = $(window).scrollTop();
+            }, 100);
+
+        }, false);
+        $(window).scroll(function () {
+            var x = $(window).scrollTop();
+            var y = x / 1000;
+            if (y <= 0.3) {
+                y = 0.3;
+            }
+            if (y >= 0.700) {
+                y = 0.700;
+            }
+            $('.head').css('background-color', 'rgba(212,251,247,' + y + ')')
+
+            if ($(window).scrollTop() > 10) {
+                if (isShow == 0) {
+                    $('#banner').animate({ 'top': '-100vh' }, 1000);
+                    isShow = 1;
+                }
+            }
+            else {
+                if (isShow == 1) {
+                    $('#banner').animate({ 'top': '0vh' }, 1000);
+                    isShow = 0;
+                }
+            }
+            if (lastTop < $(window).scrollTop()) {
+
+                var ltop = $('#tabDownload').css('top').replace('px', '');
+                ltop = ltop - ($(window).scrollTop() - lastTop);
+                $('#tabDownload').css('top', ltop + "px");
+                //document.getElementById("tes").innerHTML = $(window).scrollTop() + " | " + lastTop + " | " + ltop;
+                lastTop = $(window).scrollTop();
+            }
+            else {
+
+                //var ltop1 = $('#tabDownload').css('top').replace('px', '');
+                //var gap = (lastTop - $(window).scrollTop()  );
+                //if(gap<0)
+                //{
+                //    gap = 1;
+                //}
+                //ltop1 = ltop1+gap;
+                //$('#tabDownload').css('top', ltop1 + "px");
+
+                //document.getElementById("tes").innerHTML = $(window).scrollTop() + " | " + lastTop + " | " + " |" + " |" + ltop1;
+                //lastTop = $(window).scrollTop();
+            }
+        });
+    </script>
+
+    <style>
+        .product {
+            cursor: pointer;
+        }
+
+        .product-gallery {
+            background-size: cover;
+            -ms-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            min-height: 30rem;
+            margin: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 15rem;
+            padding-bottom: 5rem;
+        }
+
+        .nav-link {
+            color: #3d698b !important;
+            font-size: 12px;
+        }
+
+        .news:hover {
+            cursor: pointer;
+            /*padding:1%;*/
+        }
+
+        header {
+            position: relative;
+            background-color: black;
+            height: 100vh;
+            min-height: 25rem;
+            width: 100%;
+            overflow: hidden;
+        }
+
+            header video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: 0;
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            header .container {
+                position: relative;
+                z-index: 2;
+            }
+
+            header .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: black;
+                opacity: 1;
+                z-index: 1;
+            }
+    </style>
+    <style>
+        .btn-spyros {
+            background-color: #23468c;
+            color: white !important;
+            cursor: pointer;
+        }
+
+            .btn-spyros:hover {
+                background-color: #ffe400;
+                color: black;
+            }
+
+        .line-outer {
+            width: 100%;
+            background-color: transparent;
+            height: 2px;
+            overflow: hidden;
+        }
+
+        .line-inner {
+            position: relative;
+            height: 100%;
+            background-color: #ffd200;
+            left: -100%;
+        }
+
+        #ifrm {
+            display: none !important;
+        }
+
+        .dms-sos-footer i {
+            width: 40px;
+            color: #c0c0c0;
+        }
+        /* The container */
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            /* Hide the browser's default checkbox */
+            .container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            width: 35px;
+            background-color: transparent;
+            border: white solid 1px;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+            width: 10px;
+            height: 20px;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .hvr-underline-from-left:before {
+            background: #3d6889;
+        }
+
+        .table-hover tbody {
+            color: #3d698b;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .table-hover > tbody td {
+            vertical-align: middle;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #3d698b;
+            color: #d4fbf7;
+        }
+
+        .btn-primary {
+            background-color: #22478B;
+            border-color: #22478B;
+            height: 50px;
+        }
+
+            .btn-primary:hover {
+                color: yellow;
+                background-color: #22478B;
+            }
+
+        .dropdown-toggle::after {
+            content: none !important;
+        }
+
+        .downloadCatalogue {
+            color: white;
+        }
+
+            .downloadCatalogue:hover {
+                color: #fbde42;
+            }
+
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+
+        .product-icon:hover {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+    </style>
+    <!-- Sidebar Download -->
+    <div id="tabDownload" style="position: fixed;right: calc(0px - 5rem);z-index: 10000;font-size: 1rem;background-color: rgba(61,105,139,0.5);padding: 10px;top: calc(50%);color: white;transform: rotate(90deg);">
+        <a class="downloadCatalogue" href="catalog/Catalog 2019.pdf" style="text-decoration:none">
+            DOWNLOAD CATALOGUE
+        </a>
+    </div>
+    <!-- Navbar -->
+    <section class="navbar navbar-expand-lg navbar-light fixed-top py-3 head" style="background-color:rgba(212,251,247,0.3);position: fixed;top:0;width:100%;margin:0; padding: 0px 15px !important;line-height: 60px;">
+        <div class="container" style="margin:0">
+            <a class="navbar-brand js-scroll-trigger" onclick="" href="index.html?cnt=home">
+                <img src="Images/landing page/logo mili mgolas.png" style="width:28px;cursor: pointer" />
+                <span class="Signika-Bold" style="color: #3d698b;margin-left:5px;font-size: 54px;vertical-align: middle;">Mili Golas</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" id="tgl" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: white !important;background-color: transparent;background-image: url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(61, 105, 139, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e&quot;);"></span>
+            </button>
+        </div>
+        <div class="container" style="margin:0">
+            <ul class="navbar-nav collapse navbar-collapse" id="navbarResponsive" style="margin-left:250px; margin-right: 50px">
+                <li class="nav-item">
+                    <a href="Product.html" class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer">
+                        PRODUCT<div class="line-outer">
+                            <div class="line-inner">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer"  href="index.html?cnt=cntCompany">
+                        COMPANY<div class="line-outer">
+                            <div class="line-inner">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer"  href="index.html?cnt=cntDealers">
+                        DEALERS<div class="line-outer">
+                            <div class="line-inner">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer"  href="index.html?cnt=cntContact">
+                        CONTACT<div class="line-outer">
+                            <div class="line-inner">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="Images/WA.png" style="width:30px;" />
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(71, 242, 224, 0.50);border:0px; line-height:1.5Rem !important">
+                        <a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6281717192019&text">0817 1719 2019</a>
+                        <a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6281717192019&text">0817 1719 2019</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/miligolas/" class="nav-link">
+                        <img src="Images/instagram.png" style="width:30px;" />
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="Images/Shop Chart.png" style="width:35px;cursor:pointer;margin-bottom:5px" />
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(71, 242, 224, 0.50);border:0px; line-height:1.5Rem !important; min-width: 8rem;">
+                        <a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Mili Golas Shop</a>
+                        <a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Tokopedia</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- HOME -->
+    <style>
+        .product-img1
+        {
+            max-width:100%;
+            max-height:300px;
+            margin:2rem;
+
+        }
+    </style>
+    <section class="section" style="padding:8rem 0">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/ZX Cartridge Filters 1.jpg">
+                    <p class="Montserrat-Bold">ZX Cartridge Filters</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/Quartz Sand Astralpool.jpg">
+                    <p class="Montserrat-Bold">Quartz Sand Astralpool</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/Praga Filters 1.jpg">
+                    <p class="Montserrat-Bold">Praga Filters</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/O Ring MPV 1.jpg">
+                    <p class="Montserrat-Bold">O Ring MPV</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/Multiport Valve Top 1.jpg">
+                    <p class="Montserrat-Bold">Multiport Valve Top</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/Multiport Valve Side 1.jpg">
+                    <p class="Montserrat-Bold">Multiport Valve Side</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/Gravel Sand Astralpool.jpg">
+                    <p class="Montserrat-Bold">Gravel Sand Astralpool</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/FG Fiberglass Filter 1.jpg">
+                    <p class="Montserrat-Bold">FG Fiberglass Filter</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/Clamp Filters 1.jpg">
+                    <p class="Montserrat-Bold">Clamp Filters</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/BWT Filters 1.jpg">
+                    <p class="Montserrat-Bold">BWT Filters</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/ACC Top Filters 1.jpg">
+                    <p class="Montserrat-Bold">ACC Top Filters</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/ACC Side Filters 1.jpg">
+                    <p class="Montserrat-Bold">ACC Side Filters</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="product-img1" src="Images/Product/5 Butterfly Valve 1.jpg">
+                    <p class="Montserrat-Bold">5 Butterfly Valve</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <footer>
+        <div class="container-fluid" style="background-color:#d4fbf7;min-height:250px">
+            <div class="row">
+                <div class="col-lg-1 text-center" style="padding:20px">
+                    <img src="Images/landing page/logo mili mgolas.png" style="width: 97%;padding-top: 5px;" />
+                </div>
+                <div class="col-lg-5 " style="padding:20px">
+                    <p class="Montserrat-Regular" style="color:#3d698b;margin-left:1%;font-size:14px">
+                        <span>RS. Fatmawati Street No 35A</span><br />
+                        <span>Cilandak, South Jakarta</span><br />
+                        <span>Jakarta 12430</span><br />
+                        <span>Indonesia</span><br />
+                        <span>021 27824002</span>
+                    </p>
+                </div>
+                <div class="col-lg-6 Montserrat-Regular text-right p-4" style="color:#3d698b;padding-right:50px">
+                    <div style="margin-right:55px">
+                        <div class="btn-group" style="margin-top:5px">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="Images/WA.png" style="width:30px;" />
+                            </button>
+                            <ul class="dropdown-menu" role="menu" style="background-color: #d4fbf7">
+                                <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6281717192019&text=tes">0817 1719 2019</a></li>
+                                <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6281717192019&text=tes">0817 1719 2019</a></li>
+                            </ul>
+                        </div>
+                        <a href="https://www.instagram.com/miligolas/" style="margin-top:5px">
+                            <img src="Images/instagram.png" style="width:30px;" />
+                        </a>
+                        <div class="btn-group" style="margin-top:5px">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="Images/Shop Chart.png" style="width:30px;" />
+                            </button>
+                            <ul class="dropdown-menu" role="menu" style="background-color: #d4fbf7;min-width: 8rem;">
+                                <li><a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Mili Golas Shop</a></li>
+                                <li><a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Tokopedia</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div style="margin-top:30px">Mili Golas and the 'Mili Golas' logo are trade marks and are registered in numerous jurisdictions around the world.</div><br />
+                    <div style="font-size:12px">© Copyright 2017 - 2019 . Mili Golas All Rights Reserved.</div>
+                    <div style="font-size:12px">Developed by Strat-One</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Custom scripts for this template -->
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@font-face {
+    font-family: myFont;
+    src: url('avenir-next-lt-pro.otf');
+    /*src: url('GreatVibes-Regular.otf');*/
+    
+}
+.dms-textBox
+{
+    max-width:none !important;
+    font-family:myFont;
+}
+.RadPicker, .rcTable, .riTextBox
+{
+    width:100% !important;
+    max-width:100% !important;
+}
+body{
+    font-family:myFont;
+}
+input
+    {
+        max-width:none !important;
+    }

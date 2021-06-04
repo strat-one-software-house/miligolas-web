@@ -1,0 +1,1427 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#3d698b" />
+    <title>Home - Mili Golas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="strat-one.co.id">
+
+    <link href="Images/icon mili golas.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Font Awesome Icons -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Google Fonts -->
+    <link href="Content/font-awesome.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="css/hover-min.css" rel="stylesheet" />
+    <link href="Content/Font.css" rel="stylesheet">
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+
+    <!--Library Slider-->
+    <link rel="stylesheet" href="css/my-slider.css" />
+    <script src="sliderengine/jquery_1.js"></script>
+    <script src="sliderengine/amazingslider.js"></script>
+    <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
+
+    <!-- Start WOWSlider.com HEAD section -->
+    <link rel="stylesheet" type="text/css" href="engine1/style.css" />
+    <script type="text/javascript" src="engine1/jquery.js"></script>
+    <!-- End WOWSlider.com HEAD section -->
+</head>
+<body id="page-top">
+    <div id="wowslider_engine" style="position: absolute; left: -1000px; top: -1000px; opacity: 0.1;"></div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("mySelect").value;
+            document.getElementById("demo").innerHTML = "You selected: " + x;
+            $("table").hide();
+            $("#" + x).show();
+        }
+        function goto(content) {
+            var _window = $(window).scrollTop();
+
+            //$("#tgl").removeClass("navbar-toggler");
+            $("#navbarResponsive").removeClass("show");
+
+            $("#tgl").addClass("collapse");
+
+            $("body, html").delay(500).animate({
+                scrollTop: $('#' + content).offset().top - 0
+            }, 600);
+        }
+        function goto_ProductGallery(content) {
+            window.location.href = "http://localhost/spyros/productGallery?cnt=" + content;
+        }
+        $(document).ready(function () {
+            //document.getElementById("page-top").innerHTML = document.getElementById("page-top").innerHTML.replace(">t", ">")
+            // $("#wowslider-container1").addClass('ws_grabbing');
+            // console.log('a');
+            // $("#wowslider-container1").removeClass('ws_grabbing');
+            $('.ws_play')[0].click();
+            console.log('b');
+            const urlParams = new URLSearchParams(window.location.search);
+            const cnt = urlParams.get('cnt');
+            if (cnt != "") {
+                goto(cnt);
+            }
+
+
+            $("#ifrm").hide();
+            $(".product").hover(function () {
+                var src = $(this).find('.product-img').attr('src');
+                var newsrc = src.replace('png', 'jpg');
+                //$(this).find('.product-img').attr('src', newsrc);
+                $(this).css('background-color', '#ffe400');
+                $(this).find('.product-text').css('background-color', '#ffe400');
+                $(this).find('.product-text').css('color', '#22478b');
+            }, function () {
+                var src = $(this).find('.product-img').attr('src');
+                var newsrc = src.replace('jpg', 'png');
+                //$(this).find('.product-img').attr('src', newsrc);
+                $(this).css('background-color', '#23468c');
+                $(this).find('.product-text').css('background-color', '#23468c');
+                $(this).find('.product-text').css('color', 'white');
+            });
+
+        });
+        var isShow = 0;
+        var isScrolling;
+        var lastTop = $(window).scrollTop();
+        window.addEventListener('scroll', function (event) {
+
+            // Clear our timeout throughout the scroll
+            window.clearTimeout(isScrolling);
+
+            // Set a timeout to run after scrolling ends
+            isScrolling = setTimeout(function () {
+
+                // Run the callback
+                // document.getElementById("tes").innerHTML = $(window).scrollTop();
+                $('#tabDownload').animate({ 'top': '50%' }, 1000);
+                lastTop = $(window).scrollTop();
+            }, 100);
+
+        }, false);
+        $(window).scroll(function () {
+            var x = $(window).scrollTop();
+            var y = x / 1000;
+            if (y <= 0.3) {
+                y = 0.3;
+            }
+            if (y >= 0.700) {
+                y = 0.700;
+            }
+            $('.head').css('background-color', 'rgba(212,251,247,' + y + ')')
+
+            if ($(window).scrollTop() > 10) {
+                if (isShow == 0) {
+                    $('#banner').animate({ 'top': '-100vh' }, 1000);
+                    isShow = 1;
+                }
+            }
+            else {
+                if (isShow == 1) {
+                    $('#banner').animate({ 'top': '0vh' }, 1000);
+                    isShow = 0;
+                }
+            }
+            if (lastTop < $(window).scrollTop()) {
+
+                var ltop = $('#tabDownload').css('top').replace('px', '');
+                ltop = ltop - ($(window).scrollTop() - lastTop);
+                $('#tabDownload').css('top', ltop + "px");
+                //document.getElementById("tes").innerHTML = $(window).scrollTop() + " | " + lastTop + " | " + ltop;
+                lastTop = $(window).scrollTop();
+            }
+            else {
+
+                //var ltop1 = $('#tabDownload').css('top').replace('px', '');
+                //var gap = (lastTop - $(window).scrollTop()  );
+                //if(gap<0)
+                //{
+                //    gap = 1;
+                //}
+                //ltop1 = ltop1+gap;
+                //$('#tabDownload').css('top', ltop1 + "px");
+
+                //document.getElementById("tes").innerHTML = $(window).scrollTop() + " | " + lastTop + " | " + " |" + " |" + ltop1;
+                //lastTop = $(window).scrollTop();
+            }
+        });
+    </script>
+    <style>
+        .product {
+            cursor: pointer;
+        }
+
+        .product-gallery {
+            background-size: cover;
+            -ms-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            min-height: 30rem;
+            margin: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 15rem;
+            padding-bottom: 5rem;
+        }
+
+        .nav-link {
+            color: #3d698b !important;
+            font-size: 12px;
+        }
+
+        .news:hover {
+            cursor: pointer;
+            /*padding:1%;*/
+        }
+
+        header {
+            position: relative;
+            background-color: black;
+            height: 100vh;
+            min-height: 25rem;
+            width: 100%;
+            overflow: hidden;
+        }
+
+            header video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: 0;
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -moz-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            header .container {
+                position: relative;
+                z-index: 2;
+            }
+
+            header .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: black;
+                opacity: 1;
+                z-index: 1;
+            }
+    </style>
+    <style>
+        .btn-spyros {
+            background-color: #23468c;
+            color: white !important;
+            cursor: pointer;
+        }
+
+            .btn-spyros:hover {
+                background-color: #ffe400;
+                color: black;
+            }
+
+        .line-outer {
+            width: 100%;
+            background-color: transparent;
+            height: 2px;
+            overflow: hidden;
+        }
+
+        .line-inner {
+            position: relative;
+            height: 100%;
+            background-color: #ffd200;
+            left: -100%;
+        }
+
+        #ifrm {
+            display: none !important;
+        }
+
+        .dms-sos-footer i {
+            width: 40px;
+            color: #c0c0c0;
+        }
+        /* The container */
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+            /* Hide the browser's default checkbox */
+            .container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 35px;
+            width: 35px;
+            background-color: transparent;
+            border: white solid 1px;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+            width: 10px;
+            height: 20px;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .hvr-underline-from-left:before {
+            background: #3d6889;
+        }
+
+        .table-hover tbody {
+            color: #3d698b;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .table-hover > tbody td {
+            vertical-align: middle;
+            font-size: 1rem;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #3d698b;
+            color: #d4fbf7;
+        }
+
+        .btn-primary {
+            background-color: #22478B;
+            border-color: #22478B;
+            height: 50px;
+        }
+
+            .btn-primary:hover {
+                color: yellow;
+                background-color: #22478B;
+            }
+
+        .dropdown-toggle::after {
+            content: none !important;
+        }
+
+        .downloadCatalogue {
+            color: white;
+        }
+
+            .downloadCatalogue:hover {
+                color: #fbde42;
+            }
+
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+
+        .product-icon:hover {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .logo > img {
+                width:30px;
+                cursor: pointer;
+        }
+        .logo > span {
+            font-size:40px;
+            margin-left:5px;
+            vertical-align: middle;
+            color: #3d698b;
+        }
+
+        @media (min-width: 360px) {
+            .logo > img {
+                width:30px;
+                cursor: pointer;
+            }
+            .logo > span {
+                font-size:40px;
+                margin-left:5px;
+                vertical-align: middle;
+                color: #3d698b;
+            }
+        }
+        @media (min-width: 540px) {
+            .logo > img {
+                width:30px;
+                cursor: pointer;
+            }
+            .logo > span {
+                font-size:40px;
+                margin-left:5px;
+                vertical-align: middle;
+                color: #3d698b;
+            }
+        }
+        @media (min-width: 720px) {
+            .logo > img {
+                width:40px;
+                cursor: pointer;
+            }
+            .logo > span {
+                font-size: 48px;
+                margin-left:5px;
+                vertical-align: middle;
+                color: #3d698b;
+            }
+        }
+        @media (min-width: 960px) {
+            .logo > img {
+                width:40px;
+                cursor: pointer;
+            }
+            .logo > span {
+                font-size: 48px;
+                margin-left:5px;
+                vertical-align: middle;
+                color: #3d698b;
+            }
+        }
+        @media (min-width: 1140px) {
+            .logo > img {
+                width:40px;
+                cursor: pointer;
+            }
+            .logo > span {
+                font-size: 48px;
+                margin-left:5px;
+                vertical-align: middle;
+                color: #3d698b;
+            }
+        }
+
+        .text1 {
+                font-size:4.5rem;
+                margin-top:75%;
+            }
+            .text2 {
+                font-size: 4rem;
+                margin-top: -15px;
+                line-height: 4rem;
+            }
+
+        @media (min-width: 360px) {
+            .text1 {
+                font-size:4.5rem;
+                margin-top:75%;
+            }
+            .text2 {
+                font-size: 4rem;
+                margin-top: -15px;
+                line-height: 4rem;
+            }
+        }
+        @media (min-width: 540px) {
+            .text1 {
+                font-size:6rem;
+                margin-top:40%;
+            }
+            .text2 {
+                font-size: 5rem;
+                margin-top: -20px;
+                line-height: 5rem;
+            }
+        }
+        @media (min-width: 720px) {
+            .text1 {
+                font-size:8rem;
+                margin-top:30%;
+            }
+            .text2 {
+                font-size: 6rem;
+                margin-top: -40px;
+                line-height: 6rem;
+            }
+        }
+        @media (min-width: 960px) {
+            .text1 {
+                font-size:9rem;
+                margin-top:20%;
+            }
+            .text2 {
+                font-size:7rem;
+                margin-top:-40px;
+                line-height: 7rem;
+            }
+        }
+        @media (min-width: 1140px) {
+            .text1 {
+                font-size:9rem;
+                margin-top:20%;
+            }
+            .text2 {
+                font-size:7rem;
+                margin-top:-40px;
+                line-height: 7rem;
+            }
+        }
+
+
+    </style>
+    <!-- Sidebar Download -->
+    <div id="tabDownload" style="position: fixed; right: calc(0px - 5rem); z-index: 10000; font-size: 1rem; background-color: rgba(61, 105, 139, 0.5); padding: 10px; top: 50%; color: white; transform: rotate(90deg);">
+        <a class="downloadCatalogue" href="catalog/Catalog 2019.pdf" style="text-decoration:none">
+            DOWNLOAD CATALOGUE
+        </a>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top py-3 head" id="mainNav" style="background-color: rgba(212, 251, 247, 0.3); position: fixed; top: 0px; width: 100%; margin: 0px; padding: 0px 15px !important;">
+        <div class="container text-center" style="margin:0px;max-width: 1270px">
+                <a class="navbar-brand js-scroll-trigger nav-header logo" onclick="goto_Home('home')" href="index.html">
+                    <img src="Images/landing page/logo mili mgolas.png">
+                    <!--<span class="Signika-Semibold">Mili Golas</span>-->
+                </a>
+                <button class="navbar-toggler collapsed text-center" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="color: white !important;background-color: transparent;background-image: url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(61, 105, 139, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e&quot;);"></span>
+                </button>
+            <div class="collapse navbar-collapse text-center" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-md-0">
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px">
+                        <a href="http://strat-one.co.id/fluidra/ProductPoolWork.html#cntProduct" class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" target="_blank" style="cursor:pointer; font-size:12px; line-height:1.5rem; padding: 0px;">
+                            PRODUCT<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px">
+                        <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer; font-size:12px; line-height:1.5rem; padding: 0px;" onclick="goto('cntCompany')">
+                            COMPANY<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px">
+                        <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer; font-size:12px; line-height:1.5rem; padding: 0px;" onclick="goto('cntDealers')">
+                            DEALERS<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px">
+                        <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer; font-size:12px; line-height:1.5rem; padding: 0px;" onclick="goto('cntContact')">
+                            CONTACT<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px 0px">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="Images/WA.png" style="width:30px;">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(71, 242, 224, 0.50);border:0px; line-height:1.5Rem !important">
+                            <a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6282130030428&amp;text">0821 3003 0428</a>
+                            <a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6285880956987&amp;text">0858 8095 6987</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px 0px">
+                        <a href="https://www.instagram.com/miligolas/" class="nav-link">
+                            <img src="Images/instagram.png" style="width:30px;">
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px 0px">
+                        <a href="https://www.facebook.com/MiliGolas-104740844756668/" class="nav-link">
+                            <img src="Images/fb.png" style="width:30px;">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show" style="padding:10px 0px">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="Images/Shop Chart.png" style="width:35px;cursor:pointer;margin-bottom:5px">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(71, 242, 224, 0.50);border:0px; line-height:1.5Rem !important; min-width: 8rem;">
+                            <a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Mili Golas Shop</a>
+                            <a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Tokopedia</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 head" style="background-color: rgba(212, 251, 247, 0.7); position: fixed; top: 0px; width: 100%; margin: 0px; padding: 0px 15px !important; line-height: 60px;">
+        <div class="container" style="margin:0">
+            <a class="navbar-brand js-scroll-trigger" onclick="goto_Home('home')" href="index.html">
+                <img src="Images/landing page/logo mili mgolas.png" style="width:28px;cursor: pointer">
+                <span class="Signika-Bold" style="color: #3d698b;margin-left:5px;font-size: 54px;vertical-align: middle;">Mili Golas</span>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right collapse" id="tgl" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: white !important;background-color: transparent;background-image: url(&quot;data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(61, 105, 139, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e&quot;);"></span>
+            </button>
+            <div  class="navbar-nav collapse navbar-collapse" id="navbarResponsive" style="margin:0">
+                <ul class="navbar-nav ml-auto my-2 my-md-0" style="margin-left:250px; margin-right: 50px;">
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a href="http://strat-one.co.id/fluidra/ProductPoolWork.html" class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" target="_blank" style="cursor:pointer">
+                            PRODUCT<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li  class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer" onclick="goto('cntCompany')">
+                            COMPANY<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer" onclick="goto('cntDealers')">
+                            DEALERS<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a class="nav-link js-scroll-trigger Montserrat-Bold hvr-underline-from-left" style="cursor:pointer" onclick="goto('cntContact')">
+                            CONTACT<div class="line-outer">
+                                <div class="line-inner">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="Images/WA.png" style="width:30px;">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(71, 242, 224, 0.50);border:0px; line-height:1.5Rem !important">
+                            <a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6281717192019&amp;text">0817 1719 2019</a>
+                            <a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6281717192019&amp;text">0817 1719 2019</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a href="https://www.instagram.com/miligolas/" class="nav-link">
+                            <img src="Images/instagram.png" style="width:30px;">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="Images/Shop Chart.png" style="width:35px;cursor:pointer;margin-bottom:5px">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgba(71, 242, 224, 0.50);border:0px; line-height:1.5Rem !important; min-width: 8rem;">
+                            <a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Mili Golas Shop</a>
+                            <a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Tokopedia</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </nav>-->
+    <!-- HOME -->
+    <section id="cntHome">
+        <!-- Channeling Your Pool & Spa -->
+        <section class="overflow-hidden" style="background-image: url('Images/landing page/always for wellness.png');min-height:100vh;background-position:center;background-repeat:no-repeat;background-size:cover">
+            <div class="container" style="margin:0">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 Dincondensed-Bold" style="margin-left:3%">
+                        <div class="text-white-75 text1">
+                            Channeling<br>
+                        </div>
+                        <div class="text-white text2">
+                            your pool <span class="text-white-75">in wellness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our Vision -->
+        <section class="overflow-hidden p-0" style="background-image: url('Images/landing page/our vision 2.jpg');min-height:900px;background-position:center;background-repeat:no-repeat;background-size:cover">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                    </div>
+                    <div class="col-lg-6" style="padding-left:10%">
+                        <div class="Dincondensed-Bold text-white" style="font-size:72px;margin-top:200px;opacity:0.8">
+                            OUR VISION
+                        </div>
+                        <div class="Dincondensed-Bold text-white" style="font-size: 3rem; line-height: 50px; margin-top: 50px; opacity: 0.8; ">
+                            BECOME WORLD CLASS POOL<br>
+                            AND WELLNESS SUPPLIER,
+                        </div>
+                        <div class="Dincondensed-Bold text-white" style="font-size: 2rem; margin-top: 30px; line-height: 30px; opacity: 0.8; ">
+                            AS TOP OF MIND POOL AND WELLNESS
+                        </div>
+                        <div class="Dincondensed-Bold text-white" style="font-size: 2rem; opacity: 0.8; ">
+                            BUSSINESS PARTNER IN INDONESIA
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our Mission -->
+        <section class="overflow-hidden" style="background-image: url('Images/landing page/mission1.jpg');min-height:900px;background-position:center;background-repeat:no-repeat;background-size:cover">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="Dincondensed-Bold text-center" style="font-size:86px;margin-top:135px;color:seashell;opacity:0.8">
+                            OUR MISSION
+                        </div>
+                        <div class="Dincondensed text-white" style="padding:15px;border-radius:20px;line-height:1;font-size: 30px;padding-top: 3rem;">
+                            <ol type="1">
+                                <li style="padding-bottom:20px">Developing competitive channels <span style="font-size: 30px">in pool and wellness industry in Indonesia</span></li>
+                                <li style="padding-bottom:20px">Creating the best environment <span style="font-size: 30px">to contribute learn and growth  for employees</span></li>
+                                <li style="padding-bottom:20px">Become responsible <span style="font-size: 30px">to environment and community</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- COMPANY -->
+    <section>
+
+        <!--<section class="overflow-hidden" style="background-image: url('Images/contact page/our vision.jpg');min-height:900px;background-position:center;background-repeat:no-repeat;background-size:cover">
+            <div class="container" style="padding:0">
+                <div class="row">
+                    <div class="col-md-12 pt-5">
+                        <div class="Dincondensed-Bold text-center text-white" style="font-size:86px;margin-top:250px">
+                            OUR VISION
+                        </div>
+                        <div style="background-color:rgba(0,0,0,0.3)">
+                            <div class="Dincondensed-Bold text-center text-white" style="font-size:60px;margin-top:200px">
+                                Become world class pool and wellness supplier
+                            </div>
+                            <div class="Dincondensed-Bold text-center text-white" style="font-size:60px;margin-top:-25px">
+                                as top of mind pool and wellness business partner in Indonesia
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <!-- About -->
+        <section id="cntCompany" class="overflow-hidden" style="background-image: url('Images/contact page/about 2.jpg');min-height:900px;background-position:center;background-repeat:no-repeat;background-size:cover">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 Dincondensed-Bold text-white-75" style="font-size: 86px; margin-top: 100px">
+                        ABOUT
+                    </div>
+                    <div class="col-md-4">
+                        <img style="width:100%;opacity:0.8;padding-top: 10px;" src="Images/about/mili golas 3.png">
+                    </div>
+                    <div class="col-md-8 text-justify Dincondensed-Bold text-white-75 pt-3" style="font-size: 26px;padding: 0px 15px !important;">
+                        <p>Mili Golas officially established in 2019 has become an authorized distributor of Fluidra, the top company in swimming pool and wellness industry around the world.</p>
+                        <p>The meaning of words “Mili Golas” originally came from Javanese and Spanish,. Javanese represent the land where Mili Golas originally established and Spanish represent the Mili Golas first business partner Fluidra that originally from Spain.</p>
+                        <p>In Javanes Mili Golas is the short for “mili saking tahun songolas”, means Mili Golas been flowing since 2019. While in Spanish Mili Golas Golas is the short for “Milones de Golas” - means millions goals. Mili Golas means that we have been established from 2019 and we have millions goals that we will achieve.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Pool -->
+        <section style="overflow:hidden">
+            <div class="container-fluid" style="padding: 0px;margin: 0px;max-width: none;">
+                <!-- Start WOWSlider.com BODY section -->
+                <div id="wowslider-container1" style="height: auto; font-size: 10px;" class="ws_gestures">
+                    <div class="ws_images" style="overflow: visible;">
+                        <div style="position: relative; width: 100%; font-size: 0px; line-height: 0; max-height: 100%; overflow: hidden;"><img src="data1/images/about_3.jpg" alt="About 3" title="" id="wows1_0" style="width: 100%; visibility: hidden;"></div>
+
+                        <div style="position: absolute; inset: 0px; overflow: hidden;">
+                            <div class="ws_list" style="position: absolute; top: 0px; height: 100%; width: 1000%; left: -100%; visibility: visible;">
+                                <div class="ws_swipe_left" style="position: absolute; top: 0px; height: 100%; overflow: hidden; width: 10%; left: -10%;"><img src="data1/images/about2.jpg" alt="About2" title="" id="wows1_2" style="visibility: visible; margin-top: -121.875px;"></div><ul style="width: 100%;">
+                                    <li style="width: 10%;"><img src="data1/images/about_3.jpg" alt="About 3" title="" id="wows1_0" style="visibility: visible; margin-top: -121.875px;"></li>
+                                    <li style="width: 10%;"><img src="data1/images/about1.jpg" alt="bootstrap slider" title="" id="wows1_1" style="visibility: visible; margin-top: -121.875px;"></li>
+                                    <li style="width: 10%;"><img src="data1/images/about2.jpg" alt="About2" title="" id="wows1_2" style="visibility: visible; margin-top: -121.875px;"></li>
+                                </ul><div class="ws_swipe_right" style="position: absolute; top: 0px; height: 100%; overflow: hidden; width: 10%; left: 30%;"><img src="data1/images/about_3.jpg" alt="About 3" title="" id="wows1_0" style="visibility: visible; margin-top: -121.875px;"></div>
+                            </div>
+                        </div><div class="ws_cover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 10; background: rgb(255, 255, 255) none repeat scroll 0% 0%; opacity: 0;"><a href="#" style="display:none;position:absolute;left:0;top:0;width:100%;height:100%"></a></div><div class="ws_effect ws_blur" style="position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%; height: 100%; opacity: 1;"><canvas width="1349" height="1012" style="z-index: 8; position: absolute; left: 0px; top: 0px; visibility: hidden; width: 1349px; height: 1012px; margin-top: -121.883px; margin-left: 0px; opacity: 0;"></canvas><canvas width="1349" height="1012" style="z-index: 8; position: absolute; left: 0px; top: 0px; visibility: visible; width: 1349px; height: 1012px; margin-top: -121.883px; margin-left: 0px; opacity: 0.97;"></canvas></div><div style="position: absolute; padding: 0px; z-index: 56; right: 15px; bottom: 15px;"><a href="http://wowslider.com" style="position: relative; display: block; font-size: 15px; width: auto; height: auto; font-family: Arial; font-weight: normal; font-style: normal; padding: 1px 5px; margin: 0px; border-radius: 10px; outline: currentcolor none medium;" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div><div class="ws_controls">
+                            <div class="ws_bullets">
+                                <div>
+                                    <a href="#wows1_0" title="About 3" class=""><span>1</span></a>
+                                    <a href="#wows1_1" title="About1" class="ws_selbull"><span>2</span></a>
+                                    <a href="#wows1_2" title="About2" class=""><span>3</span></a>
+                                    <div class="ws_bulframe"><div><div style="width: 400%;"><img style="height:1000px" src="data1/tooltips/about_3.jpg" alt="About 3"><img style="height:1000px" src="data1/tooltips/about1.jpg" alt="About1"><img style="height:1000px" src="data1/tooltips/about2.jpg" alt="About2"></div></div><span></span></div>
+                                </div>
+                            </div><a href="#" class="ws_next"><span><i></i><b></b></span></a><a href="#" class="ws_prev"><span><i></i><b></b></span></a><a href="#" class="ws_playpause ws_pause"><span><i></i><b></b></span></a>
+                        </div><div class="ws-title-wrapper" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden;"><div class="ws-title" style="display: inline-block; width: 100%; transform: translate3d(-257.082px, 0px, 0px);"></div><div class="ws-title" style="display: inline-block; width: 100%; transform: translate3d(1203.53px, 0px, 0px);"></div></div>
+                    </div>
+                    <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">bootstrap slideshow</a> by WOWSlider.com v8.8</div>
+                    <div class="ws_shadow"></div>
+                </div>
+                <script type="text/javascript" src="engine1/wowslider.js"></script>
+                <script type="text/javascript" src="engine1/script.js"></script>
+                <!-- End WOWSlider.com BODY section -->
+            </div>
+        </section>
+        <!-- Supply Projects -->
+        <section class="overflow-hidden" style="background-image: url('Images/contact page/SP.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;background-position: top;">
+            <div class="container-fluid h-100 m-0 p-0" style="margin:50px 15px !important">
+                <div class="Dincondensed-Bold text-center text-white-75" style="font-size: 86px">
+                    SUPPLY PROJECTS
+                </div>
+                <div class="row text-white-75 Signika-Semibold" style="font-size: 20px;line-height: 2.4rem;">
+                    <div class="col-lg-4 col-md-4">
+                        <ul>
+                            <li>Trans Studio Mall Bali Waterpark (2019)</li>
+                            <li>Trans Park &amp; Trans Studio Mall Cibubur Waterpark (2019)</li>
+                            <li>Sudamala Resort Labuan Bajo (2019)</li>
+                            <li>Cisarua Waterpark, Natar, Lampung (2019)</li>
+                            <li>Kijangmas, Green Garden, and Polygon Private Pool Houses Palembang (2019)</li>
+                            <li>Water Future Head Quarter of Waskita Jakarta (2019)</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <ul>
+                            <li>Pelita Bangsa School Lampung (2019)</li>
+                            <li>Monrow Tower Apartment Jababeka (2019)</li>
+                            <li>Belazona Mall Bandung</li>
+                            <li>Four Season Gatot Subroto Jakarta *)</li>
+                            <li>Shangri La Jakarta *)</li>
+                            <li>Banyan Tree Ungasan Group *)</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <ul>
+                            <li>The Pakubuwono group *)</li>
+                            <li>Aston Rasuna Said Jakarta *)</li>
+                            <li>Taman Safari Jakarta *)</li>
+                            <li>Sumarecon Group *)</li>
+                            <li>Pelita Harapan Univeristy Karawaci *)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row text-white-75 Signika-Semibold" style="font-size: 20px;line-height: 2.4rem;">
+                    <div class="col-lg-12 col-md-12">
+                        <span class="font-italic">*) continue maintain</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our Product -->
+        <section class="overflow-hidden" style="background-image: url('Images/Background brand.jpg'); min-height: 900px; background-position: center; background-repeat: no-repeat; background-size: cover">
+            <div class="container-fluid h-100 m-0 p-0">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 text-center p-5">
+                        <div class="Dincondensed-Bold text-left" style="color:rgba(255, 255, 255, 0.60); font-size:86px;margin-top:140px;padding-left: 70px;">OUR BRAND</div>
+                        <div class="container" style="background-color: rgba(185,230,230,0.8); padding: 10px 55px; border-radius:20px; margin-top: 55px; /*! margin-left: -35px; */ /*! margin-right: 0px; */ background: rgba(0,0,0,0.5); background: -moz-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.5) 100%); background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.5)), color-stop(100%, rgba(255,255,255,0.5))); background: -webkit-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.5) 100%); background: -o-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.5) 100%); background: -ms-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.5) 100%); background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.5) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=1 );">
+                            <div class="row">
+                                <a href="http://magnapool.com/" target="_blank" class="col-md-3">
+                                    <img class="img-fluid" src="Images/MagnaPool@1x.png">
+                                </a>
+                                <a href="https://www.astralpool.com/en/" target="_blank" class="col-md-3">
+                                    <img class=" img-fluid" src="Images/AstralPool.png">
+                                </a>
+                                <a href="https://www.aquaviaspa.com/en/" target="_blank" class="col-md-3">
+                                    <img class=" img-fluid" src="Images/AquaviaSpa.png">
+                                </a>
+                                <a href="https://www.zodiac.com.au/en/" target="_blank" class="col-md-3">
+                                    <img class=" img-fluid" src="Images/zodiac 2.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- DEALERS -->
+    <!-- Find Our Distributor Dealer -->
+    <section class="overflow-hidden" id="cntDealers" style="background-image: url('Images/contact page/about.jpg'); min-height:900px; background-repeat: round; padding-top: 8rem; padding-bottom: 8rem">
+        <div class="container" style="max-width: 1250px;padding:0px 10px">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 ">
+                    <div class="Dincondensed-Bold" style="font-size: 5rem; margin-top: 150px; line-height: 1rem; color: #3d698b">FIND OUR</div>
+                    <div class="Dincondensed-Bold" style="font-size: 5rem; color: #3d698b">DISTRIBUTOR &amp; DEALER</div>
+                </div>
+                <div class="col-lg-12 col-md-12 ">
+                    <div class="form-group" style="width:25%">
+                        <label class="h3" style="color: #3d698b">Choose Area</label>
+                        <select id="mySelect" onchange="myFunction()" class="form-control" style="background-color:#d4fbf7">
+                            <option>Choose Area</option>
+                            <option value="jaksel">Jakarta Selatan</option>
+                            <option value="jakpus">Jakarta Pusat</option>
+                            <option value="jakbar">Jakarta Barat</option>
+                            <option value="bogor">Bogor</option>
+                            <option value="depok">Depok</option>
+                            <option value="tangerang">Tangerang</option>
+                            <option value="bekasi">Bekasi</option>
+                            <option value="semarang">Semarang</option>
+                            <option value="surabaya">Surabaya</option>
+                        </select>
+                    </div>
+                    <div id="demo" style="display:none"></div>
+                    <table id="jaksel" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Gemilang Tirta Pertiwi (GTP)</td>
+                                <td>021 - 765 8287</td>
+                                <td>Jl. RS Fatmawati No. 26B Cilandak</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Sentra Trinista</td>
+                                <td>021 - 769 6904</td>
+                                <td>Jl. Ciputat Raya No. 337 RT.3 RW.1 Kebayoran Lama Utara</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Cromwell</td>
+                                <td>021 - 7268376</td>
+                                <td>Jl. Ciputat Raya No. 337 RT.3 RW.1 Kebayoran Lama Utara</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Damar Pool</td>
+                                <td>0812 8827 5885</td>
+                                <td>Jl. Tahi Bonar Simatupang No. 6</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Aneka Pompa</td>
+                                <td></td>
+                                <td>Jl Pasar Minggu No 11ABC, Pejaten, Pasar Minggu</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Asia Pool</td>
+                                <td>021 - 7505088</td>
+                                <td>Jl. RS Fatmawati No. 51 RT.5/RW.3 Cilandak Barat</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Aneka Interniaga Gemilang</td>
+                                <td>0812 8333 7778 / 021 837 063 55</td>
+                                <td>Jl. Guntur No 7</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Nikita pool</td>
+                                <td>0858 8856 9988</td>
+                                <td>jl sultan iskandar muda no 18J, kebayoran lama</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Atlantic Pool</td>
+                                <td></td>
+                                <td>Jl. Ciputat Raya No.21, RT.6/RW.1, 6, Pd. Pinang, Kby. Lama</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>CV Kuhanda Alam Semesta</td>
+                                <td>0813 8566 0373</td>
+                                <td>Jl. Kesehatan Raya No.4, RT.8/RW.11, Bintaro, Kec. Pesanggrahan</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Trijaya Pool</td>
+                                <td>021 788 377 33</td>
+                                <td>Jl. Ampera Raya No.17G, RT.7/RW.2, Ragunan, Ps. Minggu</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Budi’s Pool</td>
+                                <td>021 780 06 17</td>
+                                <td>Jl. Ampera Raya No.77, RT.3/RW.10, Ragunan, Ps. Minggu</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Moncol Golfusa</td>
+                                <td>021 781 48 01</td>
+                                <td>Jl. Kemang Sel. No.8 B, Cilandak Tim., Ps. Minggu</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Elite Prima Hutama</td>
+                                <td>021 294 650 00</td>
+                                <td>Jl. Casablanca Raya, Kav. 88, Jakarta, RT.14/RW.5, Menteng Dalam</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Emilia Jaya Pools</td>
+                                <td>0877 7358 2282</td>
+                                <td>Jl. H.tholib No 80 Rt .001 Rw 010 Kecamatan Cipete Utara Kelaurahan Kebayoran Baru</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Maju Jaya Dwi Vira</td>
+                                <td>0821 1366 3331</td>
+                                <td>Plaza Simatupang Lt 1 JL TB Simatupang</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="jakpus" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid; ">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td "=" ">Bangun Tirta</td>
+                                <td>0813 9880 2899</td>
+                                <td>Jl. Jend Gatot Subroto Kav. 54 Petamburan Tanah Abang</td>
+                                <td>Jakarta Selatan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="jakbar" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Buana Biru</td>
+                                <td>021 - 5830 2483</td>
+                                <td>Jl. Puri Kencana Blk J1/3Y RT.11 RW.7 Kembangan Selatan</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Buana Tirta Pool</td>
+                                <td>021 - 6297 577</td>
+                                <td>Jl. Raya Mangga Besar No. 28A RT.14/RW.8 Kota Tua Maphar, Tamansari</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Sekawan Teknik Utama</td>
+                                <td>021 - 5830 2483</td>
+                                <td>Jl. Puri Kencana Blk J1/3Y RT.11 RW.7 Kembangan Selatan</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Trimitra Omega</td>
+                                <td>021 - 5437 3050</td>
+                                <td>Komplek Ruko Puri Gardena Jl. Peta Barat Raya Blok A2 No.4 Kalideres</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Amantara Pool shop</td>
+                                <td></td>
+                                <td>Jl. Kembang Kerep No.5C, RT.6/RW.2, Kembangan Sel, Kembangan</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Trimitra Omega Pratama</td>
+                                <td>0878 8683 1001</td>
+                                <td>Komplek Ruko Gardena Jl. Peta Barat Raya Blok A2 No.4 Kalideres</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Global Fantastic Pool</td>
+                                <td>0878 8577 4112</td>
+                                <td>Jl. Permata Taman Palem, RT.3/RW.3, Pegadungan, Kec. Kalideres</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Artha Royal Mandiri</td>
+                                <td>0877 8917 6778</td>
+                                <td>Rukan Sedayu Square Blok M No.50 Jl. Outer Ringroad Lingkar Luar, Cengkareng RT.1 RW.12 Cengkareng Barat</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>SCSM Pool</td>
+                                <td></td>
+                                <td>Jl. Semanan Raya No.50 B, RT.4/RW.10, Semanan, Kec. Kalideres</td>
+                                <td>Jakarta Barat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="bogor" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Puspajaya Pool</td>
+                                <td>081219138353</td>
+                                <td>Desa Pasir Angin Landeh, RT.2 / RW.3, Cipayung Datar, Kec. Megamendung, Bogor, Jawa Barat 16770</td>
+                                <td>Bogor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="depok" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Ganesha Pool</td>
+                                <td>021 - 7720 6416</td>
+                                <td>Jl Grogol Raya No. 80F, Grogol - Limo</td>
+                                <td>Depok</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Layya Pool</td>
+                                <td>0813 1059 0353</td>
+                                <td>Ruko Griya Cinere Blok 49 No. 4 Jl. Raya Meruyung , Cinere - Limo</td>
+                                <td>Depok</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Albian Pool</td>
+                                <td>0812 9156 5358</td>
+                                <td>Jl. Raya Grogol Seberang, Limo Cinere Grogol Limo</td>
+                                <td>Depok</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>WidaraPool</td>
+                                <td>0878 8235 3357</td>
+                                <td>Jl. M kahfi 1 no. 35b rt 05/08 tanah baru</td>
+                                <td>Depok</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="tangerang" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>SS Pool</td>
+                                <td>0812 8592 2147</td>
+                                <td>Ruko Dasana Xentre Blok CD No.56 Bonang, Bencongan, Kelapa Dua</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>NSR</td>
+                                <td>0859 3999 1151</td>
+                                <td>Kebayoran Residences Cluster Symphoni Blok H No.6 Bintaro</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Drawigi Media Perkasa</td>
+                                <td></td>
+                                <td>Jl. Ciledug Raya No.54, Kreo, Larangan</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Berlian Pool</td>
+                                <td>0812 8349 6007</td>
+                                <td>Perumahan Villa Rizki Ilhami, Jl. Mubarokah 7 Blok C2 No.4 Bojongnangka - Kelapa Dua</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Ruth Jaya Pool</td>
+                                <td>0813 1108 0898</td>
+                                <td>jln perintis kemerdekaan no 1,cikokol</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Tirtamas Jaya Poolshop</td>
+                                <td>0818 630 688</td>
+                                <td>ruko spark blok A no 8, kelapa dua</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Ocean Pool</td>
+                                <td></td>
+                                <td>JL. Raya Serpong, No. 28 C, Serpong</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Jaya Mandiri</td>
+                                <td>0815 1908 7574</td>
+                                <td>Jalan Husein Sastranegara No. 76, RT.4/RW.8, RT.4/RW.8, Jurumudi, Benda</td>
+                                <td>Tangerang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Tirta Indah Pool</td>
+                                <td>0811 888 469</td>
+                                <td>Jl. Poris Indah No.21, Cipondoh Indah, Kec. Cipondoh</td>
+                                <td>Tangerang</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="bekasi" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Multitekindo Prima</td>
+                                <td>081219800800</td>
+                                <td>Jl. Talaud A/47 Jatibening Indah, Pondok Gede Bekasi 17412</td>
+                                <td>Bekasi</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Bendot Pool</td>
+                                <td>081327342634</td>
+                                <td>Jl. Damai 2, Jatikarya, Kec. Jatisampurna, Bekasi</td>
+                                <td>Bekasi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="semarang" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>PT. Sumber Makmur Filterindo</td>
+                                <td>085712154282</td>
+                                <td>Komplek Ruko Semarang Indah Blok E-II/26, Tawangmas, Kec. Semarang Bar., Kota Semarang, Jawa Tengah 50144</td>
+                                <td>Semarang</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Blue Pool</td>
+                                <td>8112521001</td>
+                                <td>jl gombel lama no 99, semarang, jawa tengah</td>
+                                <td>Semarang</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="surabaya" class="table table-responsive-md table-responsive-sm table-hover bg-transparent text-white-75" style="display: none; width: 100%; overflow-y: auto; border: 1px solid">
+                        <tbody>
+                            <tr class="Montserrat-Bold text-center text-black-50" style="background-color:#d4fbf7">
+                                <td>DEALER</td>
+                                <td>CONTACT NUMBER</td>
+                                <td>ADDRESS</td>
+                                <td>AREA</td>
+                            </tr>
+                            <tr class="Montserrat-Regular">
+                                <td>Happy Pool Surabaya</td>
+                                <td>082257240517</td>
+                                <td>Vila bukit mas blok rb 31 . Jln mayjen sungkono. Surabaya</td>
+                                <td>Surabaya</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="cntContact">
+        <!-- Get In Touch -->
+        <section class="overflow-hidden" style="background-image: url('Images/contact page/get in touch 2.jpg'); min-height: 850px; background-repeat: round; margin-top: -1%; padding-top: 4rem; padding-bottom: 6rem">
+            <div class="container-fluid m-0 p-0" style="height:auto;">
+                <div class="row" style="margin-top:10px">
+                    <div class="col-lg-6 col-md-6 p-5">
+                        <div class="Dincondensed-Bold text-white-50" style="font-size: 8rem;">GET IN</div>
+                        <div class="Dincondensed-Bold text-white-50" style="font-size:8rem;line-height:2rem">TOUCH</div>
+                        <div class="Montserrat-Bold text-white-75" style="font-size:2rem;margin-top:5rem">VISIT US !</div>
+                        <div class="Montserrat-Regular text-white-50" style="line-height:1.25rem">RS. Fatmawati Street No.35A</div>
+                        <div class="Montserrat-Regular text-white-50" style="line-height:1.25rem">Cilandak, South Jakarta</div>
+                        <div class="Montserrat-Regular text-white-50" style="line-height:1.25rem">Jakarta 12430</div>
+                        <div class="Montserrat-Regular text-white-50" style="line-height:1.25rem">Indonesia</div>
+                        <div class="Montserrat-Regular text-white-50" style="line-height:1.25rem">021 27824002</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 p-5">
+                        <div class="Dincondensed-Bold text-white-50" style="font-size:3.5rem;margin-top:2rem">GOT QUESTIONS</div>
+                        <div class="form-group">
+                            <label class="Montserrat-Regular text-white-75">YOUR NAME</label>
+                            <input type="text" class="form-control" id="Name">
+                            <label class="Montserrat-Regular text-white-75" style="margin-top:1rem">YOUR EMAIL</label>
+                            <input type="text" class="form-control" id="Email">
+                            <label class="Montserrat-Regular text-white-75" style="margin-top:1rem">YOUR PHONE NUMBER</label>
+                            <input type="text" class="form-control" id="PhoneNumber">
+                            <label class="Montserrat-Regular text-white-75" style="margin-top:1rem">YOUR MESSAGE</label>
+                            <textarea class="form-control" id="Message" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" style="margin-top:50px">SEND YOUR MESSAGE&nbsp;&nbsp;&nbsp;<img src="Images/contact page/telegram.png"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Location Map -->
+        <section style="overflow:hidden;height:900px">
+            <div class="container-fluid" style="min-height:75vh;padding: 0px;margin: 0px;max-width: none;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8270814802813!2d106.79328061486689!3d-6.286447163282591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1d4f2dfa067%3A0xee7ccf29772dd794!2sMili+Golas!5e0!3m2!1sid!2sid!4v1558452755124!5m2!1sid!2sid" style="border:0;width:100vw;height:900px"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sign Me Up -->
+        <section class="overflow-hidden" style="display:none; margin-top: -1%; background-image: url('Images/landing page/sign me up.png');padding-bottom:8rem;padding-top:8rem;height:600px">
+            <div class="container-fluid h-100 m-0 p-0" style="">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 text-center">
+                        <div class="Montserrat-Bold text-white" style="font-size:2rem;margin-top:80px">SIGN ME UP!</div>
+                        <div class="Montserrat-Regular text-white-75" style="font-size:100%">Get special offers, exclusive product</div>
+                        <div class="Montserrat-Regular text-white-75" style="font-size:100%;line-height:1rem;">news, and event info delivered straight</div>
+                        <div class="Montserrat-Regular text-white-75" style="font-size:100%;line-height:1.75rem;">to your Inbox</div>
+                    </div>
+                </div>
+                <div class="row p-0">
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-4 p-5" style="margin-top:0">
+                        <div class="input-group input-group-sm" style="width:100%;">
+                            <input type="text" placeholder="YOUR EMAIL" class="form-control" style="border-radius: 0; background-color: transparent; height: 40px">
+                            <span class="input-group-btn Montserrat-Bold">
+                                <button type="button" class="btn btn-info btn-flat" style="line-height:1.6;border-radius:0;border:1px solid">SUBSCRIBE NOW!</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </div>
+                <div class="row p-0">
+                    <div class="col-lg-4 col-md-4">
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer>
+            <div class="container-fluid" style="background-color:#d4fbf7;min-height:250px">
+                <div class="row">
+                    <div class="col-lg-1 text-center" style="padding:20px">
+                        <img src="Images/landing page/logo mili mgolas.png" style="width: 97%;padding-top: 5px;">
+                    </div>
+                    <div class="col-lg-5 " style="padding:20px">
+                        <p class="Montserrat-Regular" style="color:#3d698b;margin-left:1%;font-size:14px">
+                            <span>RS. Fatmawati Street No 35A</span><br>
+                            <span>Cilandak, South Jakarta</span><br>
+                            <span>Jakarta 12430</span><br>
+                            <span>Indonesia</span><br>
+                            <a href="tel:+622127824002">021 2782 4002</a>
+                            <br/>
+                            <a href="tel:+6282130030428">0821 3003 0428</a>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 Montserrat-Regular text-right p-4" style="color:#3d698b;padding-right:50px">
+                        <div style="margin-right:55px">
+                            <div class="btn-group" style="margin-top:5px">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="Images/WA.png" style="width:30px;">
+                                </button>
+                                <ul class="dropdown-menu" role="menu" style="background-color: #d4fbf7">
+                                    <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6282130030428&amp;text">0821 3003 0428</a></li>
+                                    <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=6285880956987&amp;text">0858 8095 6987</a></li>
+                                </ul>
+                            </div>
+                            <a href="https://www.instagram.com/miligolas/" style="margin-top:5px">
+                                <img src="Images/instagram.png" style="width:30px;">
+                            </a>
+                             <a href="https://www.facebook.com/MiliGolas-104740844756668/" style="margin-top:5px;margin-left: 10px;">
+                                <img src="Images/fb.png" style="width:30px;">
+                            </a>
+                            <div class="btn-group" style="margin-top:5px">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="Images/Shop Chart.png" style="width:30px;">
+                                </button>
+                                <ul class="dropdown-menu" role="menu" style="background-color: #d4fbf7;min-width: 8rem;">
+                                    <li><a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Mili Golas Shop</a></li>
+                                    <li><a class="dropdown-item" href="#" style="padding: .25rem 0.5rem;">Tokopedia</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="margin-top:30px">Mili Golas and the 'Mili Golas' logo are trade marks and are registered in numerous jurisdictions around the world.</div><br>
+                        <div style="font-size:12px">© Copyright 2017 - 2019 . Mili Golas All Rights Reserved.</div>
+                        <div style="font-size:12px">Developed by Strat-One</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Custom scripts for this template -->
+
+</body>
+</html>

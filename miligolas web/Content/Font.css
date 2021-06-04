@@ -1,0 +1,146 @@
+﻿.text-yellow
+{
+    color:#ffe400 !important;
+}
+.text-corporate
+{
+    color:#001a3b !important;
+}
+.text-grey
+{
+    color:#e8e8e8 !important;
+}
+
+
+@font-face {
+    font-family: NotoSansCarian-Regular;
+    src: url('../fonts/NotoSansCarian-Regular.otf');
+}
+.NotoSansCarian-Regular
+{
+    font-family:NotoSansCarian-Regular !important;
+}
+
+@font-face {
+    font-family: Montserrat-Black;
+    src: url('../fonts/Montserrat-Black.otf');
+}
+.Montserrat-Black
+{
+    font-family:Montserrat-Black !important;
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url('../fonts/Montserrat-Bold.otf');
+}
+.Montserrat-Bold
+{
+    font-family:Montserrat-Bold !important;
+}
+@font-face {
+    font-family: Montserrat-SemiBold;
+    src: url('../fonts/Montserrat-SemiBold.otf');
+}
+.Montserrat-SemiBold
+{
+    font-family:Montserrat-SemiBold !important;
+}
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('../fonts/Montserrat-Regular.otf');
+}
+.Montserrat-Regular
+{
+    font-family:Montserrat-Regular !important;
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url('../fonts/Montserrat-Light.otf');
+}
+.Montserrat-Light
+{
+    font-family:Montserrat-Light !important;
+}
+
+@font-face {
+    font-family: Dincondensed-Bold;
+    src: url('../fonts/DINCondensed-Bold.ttf')
+}
+.Dincondensed-Bold
+{
+    font-family:Dincondensed-Bold !important;
+}
+
+@font-face {
+    font-family: Dincondensed;
+    src: url('../fonts/DINCondensed.ttf')
+}
+.Dincondensed
+{
+    font-family:Dincondensed !important;
+}
+
+@font-face {
+    font-family: forever;
+    src: url('../fonts/Forever Brush Script Demo.otf')
+}
+.forever
+{
+    font-family:forever !important;
+}
+
+@font-face {
+    font-family: AlexBrush;
+    src: url('../fonts/AlexBrush-Regular.ttf')
+}
+.AlexBrush
+{
+    font-family:AlexBrush !important;
+}
+
+@font-face {
+    font-family: EstylleMadison;
+    src: url('../fonts/EstylleMadison.ttf')
+}
+.EstylleMadison
+{
+    font-family:EstylleMadison !important;
+}
+
+@font-face {
+    font-family: Signika-Bold;
+    src: url('../fonts/Signika-Bold.ttf')
+}
+.Signika-Bold
+{
+    font-family:Signika-Bold !important;
+}
+
+@font-face {
+    font-family: Signika-Light;
+    src: url('../fonts/Signika-Light.ttf')
+}
+.Signika-Light
+{
+    font-family:Signika-Light !important;
+}
+
+@font-face {
+    font-family: Signika-Regular;
+    src: url('../fonts/Signika-Regular.ttf')
+}
+.Signika-Regular
+{
+    font-family:Signika-Regular !important;
+}
+
+@font-face {
+    font-family: Signika-Semibold;
+    src: url('../fonts/Signika-Semibold.ttf')
+}
+.Signika-Semibold
+{
+    font-family:Signika-Semibold !important;
+}
